@@ -1,4 +1,5 @@
 <?php
+
 namespace Deployer;
 
 require 'recipe/laravel.php';
@@ -10,21 +11,21 @@ set('application', 'my_project');
 set('repository', '');
 
 // [Optional] Allocate tty for git clone. Default value is false.
-set('git_tty', true); 
+set('git_tty', true);
 
-// Shared files/dirs between deploys 
+// Shared files/dirs between deploys
 add('shared_files', []);
 add('shared_dirs', []);
 
-// Writable dirs by web server 
+// Writable dirs by web server
 add('writable_dirs', []);
 set('allow_anonymous_stats', false);
 
 // Hosts
 
 host('project.com')
-    ->set('deploy_path', '~/{{application}}');    
-    
+    ->set('deploy_path', '~/{{application}}');
+
 // Tasks
 
 task('build', function () {
@@ -37,4 +38,3 @@ after('deploy:failed', 'deploy:unlock');
 // Migrate database before symlink new release.
 
 before('deploy:symlink', 'artisan:migrate');
-
