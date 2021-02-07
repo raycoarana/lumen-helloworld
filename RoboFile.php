@@ -10,6 +10,14 @@ use Robo\Result;
  */
 class RoboFile extends \Robo\Tasks
 {
+    private $sourceSets = [
+        "app/",
+        "bootstrap/",
+        "database/",
+        "routes/",
+        "tests/"
+    ];
+
     /**
      * @return Result
      */
@@ -31,11 +39,19 @@ class RoboFile extends \Robo\Tasks
             ->option("level", "8", "=")
             ->option("configuration", "build-tools/phpstan-baseline.neon", "=")
             ->option("no-interaction")
-            ->arg("app/")
-            ->arg("bootstrap/")
-            ->arg("database/")
-            ->arg("routes/")
-            ->arg("tests/")
+            ->rawArg(implode(" ", $this->sourceSets))
+            ->run();
+    }
+
+    /**
+     * @return Result
+     */
+    public function checkPhpMD()
+    {
+        return $this->taskExec("./vendor/bin/phpmd")
+            ->arg(implode(",", $this->sourceSets))
+            ->arg("ansi")
+            ->arg("cleancode,codesize,controversial,design,naming,unusedcode")
             ->run();
     }
 
