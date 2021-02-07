@@ -1,0 +1,12 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined static method App\\\\Models\\\\User\\:\\:where\\(\\)\\.$#"
+			count: 1
+			path: ../app/Providers/AuthServiceProvider.php
+
+		-
+			message: "#^Access to an undefined property Laravel\\\\Lumen\\\\Application\\:\\:\\$config\\.$#"
+			count: 1
+			path: ../bootstrap/app.php
+
