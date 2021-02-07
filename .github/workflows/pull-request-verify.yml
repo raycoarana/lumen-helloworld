@@ -25,14 +25,10 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
     - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress
-    - name: Generate IDE Helper classes for static analysis
-      run: composer run post-update-cmd
+      run: composer install --no-progress --prefer-dist --optimize-autoloader
 
     - name: Run verifications
       run: ./vendor/bin/robo verify
