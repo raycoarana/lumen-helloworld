@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +94,12 @@ $app->configure('app');
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+if ($app->environment() !== 'production') {
+    class_alias(Illuminate\Database\Eloquent\Model::class, 'Eloquent');
+    $app->config->set('app.aliases', ['Eloquent' => Illuminate\Database\Eloquent\Model::class]);
+    $app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+}
 
 /*
 |--------------------------------------------------------------------------
