@@ -58,6 +58,16 @@ class RoboFile extends \Robo\Tasks
     /**
      * @return Result
      */
+    public function checkPhan()
+    {
+        return $this->taskExec("./vendor/bin/phan")
+            ->option("config-file", "build-tools/phan-config.php", "=")
+            ->run();
+    }
+
+    /**
+     * @return Result
+     */
     public function checkPhpCs()
     {
         return $this->commonPhpCsConfig($this->taskExec("./vendor/bin/phpcs"));
