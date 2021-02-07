@@ -62,6 +62,8 @@ class RoboFile extends \Robo\Tasks
     {
         return $this->taskExec("./vendor/bin/phan")
             ->option("config-file", "build-tools/phan-config.php", "=")
+            ->option("load-baseline", "build-tools/phan-baseline.php", "=")
+            ->option("analyze-twice")
             ->run();
     }
 
@@ -88,7 +90,7 @@ class RoboFile extends \Robo\Tasks
      */
     private function commonPhpCsConfig($task)
     {
-        $task->option("standard", "PSR12", "=")
+        return $task->option("standard", "PSR12", "=")
             ->option("ignore", ".vendor,_ide_helper.php", "=")
             ->option("colors")
             ->arg("./")
@@ -101,9 +103,10 @@ class RoboFile extends \Robo\Tasks
     public function verify()
     {
         return $this->collectionBuilder()
-            ->addCode(array($this, 'test'))
-            ->addCode(array($this, 'checkPhpCs'))
-            ->addCode(array($this, 'checkPhpStan'))
+            ->addCode(array($this, 'test'), 'test')
+            ->addCode(array($this, 'checkPhpCs'), 'PHP-CS')
+            ->addCode(array($this, 'checkPhpStan'), 'PHP Stan')
+            ->addCode(array($this, 'checkPhan'), 'Phan')
             ->run();
     }
 }

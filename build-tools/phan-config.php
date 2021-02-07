@@ -40,6 +40,8 @@ use Phan\Issue;
 
 return [
 
+    'allow_overriding_vague_return_types' => true,
+
     // The PHP version that the codebase will be checked for compatibility against.
     // For best results, the PHP binary used to run Phan should have the same PHP version.
     // (Phan relies on Reflection for some types, param counts,
