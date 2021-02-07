@@ -31,6 +31,8 @@ jobs:
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress
+    - name: Generate IDE Helper classes for static analysis
+      run: composer run post-update-cmd
 
     - name: Run verifications
       run: ./vendor/bin/robo verify
