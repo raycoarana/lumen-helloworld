@@ -2,8 +2,6 @@
 
 namespace Example;
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 use Common\TestCase;
 
 class ExampleTest extends TestCase

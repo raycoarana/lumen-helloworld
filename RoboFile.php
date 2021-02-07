@@ -42,6 +42,25 @@ class RoboFile extends \Robo\Tasks
     /**
      * @return Result
      */
+    public function checkPhan()
+    {
+        return $this->taskExec("./vendor/bin/phan")
+            ->arg("analyse")
+            ->option("autoload-file", "_ide_helper.php", "=")
+            ->option("level", "8", "=")
+            ->option("configuration", "build-tools/phpstan-baseline.neon", "=")
+            ->option("no-interaction")
+            ->arg("app/")
+            ->arg("bootstrap/")
+            ->arg("database/")
+            ->arg("routes/")
+            ->arg("tests/")
+            ->run();
+    }
+
+    /**
+     * @return Result
+     */
     public function checkPhpCs()
     {
         return $this->commonPhpCsConfig($this->taskExec("./vendor/bin/phpcs"));
