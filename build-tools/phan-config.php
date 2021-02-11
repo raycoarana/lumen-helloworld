@@ -355,6 +355,7 @@ return [
         'app',
         'bootstrap',
         'database',
+        'logic',
         'routes',
         'vendor',
         'tests'

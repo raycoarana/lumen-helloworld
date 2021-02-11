@@ -14,6 +14,7 @@ class RoboFile extends \Robo\Tasks
         "app/",
         "bootstrap/",
         "database/",
+        "logic/",
         "routes/",
         "tests/"
     ];
