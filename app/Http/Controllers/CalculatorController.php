@@ -7,11 +7,6 @@ use Logic\Calculator\SumUseCase;
 
 class CalculatorController extends Controller
 {
-    public function __construct()
-    {
-        //
-    }
-
     public function sum(Request $request)
     {
         $useCase = app(SumUseCase::class);
