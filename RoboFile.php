@@ -26,6 +26,8 @@ class RoboFile extends \Robo\Tasks
     {
         return $this->taskPHPUnit()
             ->configFile('phpunit.xml')
+            ->option("coverage-html", "reports/coverage-html")
+            ->option("coverage-clover", "reports/coverage.xml")
             ->run();
     }
 
@@ -92,7 +94,7 @@ class RoboFile extends \Robo\Tasks
     private function commonPhpCsConfig($task)
     {
         return $task->option("standard", "PSR12", "=")
-            ->option("ignore", ".vendor,_ide_helper.php", "=")
+            ->option("ignore", ".vendor,_ide_helper.php,reports", "=")
             ->option("colors")
             ->arg("./")
             ->run();

@@ -2,9 +2,9 @@
 
 namespace Example;
 
-use Common\TestCase;
+use Common\IntegrationTestBase;
 
-class ExampleTest extends TestCase
+class ExampleIntegrationTest extends IntegrationTestBase
 {
     /**
      * A basic test example.

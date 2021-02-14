@@ -357,8 +357,7 @@ return [
         'database',
         'logic',
         'routes',
-        'vendor',
-        'tests'
+        'vendor'
     ],
 
     // A list of individual files to include in analysis
