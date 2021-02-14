@@ -36,3 +36,11 @@ jobs:
 
     - name: Run verifications
       run: ./vendor/bin/robo verify
+
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./reports/coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
