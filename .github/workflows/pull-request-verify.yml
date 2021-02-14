@@ -9,7 +9,8 @@ jobs:
     strategy:
       matrix:
         php-versions: ['7.3', '7.4']
-
+    env:
+      PHP_VERSION: ${{ matrix.php-versions }}
     steps:
     - uses: actions/checkout@v2
     - name: Setup PHP
@@ -41,6 +42,7 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./reports/coverage.xml
-        flags: unittests
-        name: codecov-umbrella
+        flags: tests
+        name: Coverage-${{ matrix.php-versions }}
+        env_vars: PHP_VERSION
         fail_ci_if_error: true

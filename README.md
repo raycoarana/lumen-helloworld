@@ -1,5 +1,6 @@
 Lumen Framework Helloworld
 ===
+[![codecov](https://codecov.io/gh/raycoarana/lumen-helloworld/branch/main/graph/badge.svg)](https://codecov.io/gh/raycoarana/lumen-helloworld)
 
 Just a repo to set-up a base project for PHP with:
 - [Lumen](https://lumen.laravel.com/) micro-framework
