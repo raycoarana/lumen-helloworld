@@ -37,7 +37,7 @@ class RoboFile extends \Robo\Tasks
         return $this->taskExec("./vendor/bin/phpstan")
             ->arg("analyse")
             ->option("autoload-file", "_ide_helper.php", "=")
-            ->option("level", "8", "=")
+            ->option("level", "6", "=")
             ->option("configuration", "build-tools/phpstan-baseline.neon", "=")
             ->option("no-interaction")
             ->rawArg(implode(" ", $this->sourceSets))
